@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Become.Views.FoundDocumentPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <Color x:Key="Primary">#0D47A1</Color>
+        <Color x:Key="Title">#1A1F2B</Color>
+        <Color x:Key="TextMuted">#7B8499</Color>
+        <Color x:Key="Surface">#E9ECF3</Color>
+        <Color x:Key="Divider">#DDE2EA</Color>
+
+        <Style x:Key="Icon" TargetType="Path">
+            <Setter Property="Stroke" Value="{StaticResource Title}" />
+            <Setter Property="StrokeThickness" Value="1.8" />
+            <Setter Property="StrokeLineCap" Value="Round" />
+            <Setter Property="StrokeLineJoin" Value="Round" />
+            <Setter Property="Aspect" Value="Uniform" />
+            <Setter Property="WidthRequest" Value="18" />
+            <Setter Property="HeightRequest" Value="18" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style x:Key="SectionTitle" TargetType="Label">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="{StaticResource Title}" />
+        </Style>
+
+        <Style x:Key="FieldEntry" TargetType="Entry">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextColor" Value="{StaticResource Title}" />
+            <Setter Property="PlaceholderColor" Value="#A9B0BF" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- En-tête -->
+        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14" Padding="20,16,20,12">
+            <Border StrokeThickness="0" BackgroundColor="Transparent" Padding="4">
+                <Path Style="{StaticResource Icon}"
+                      WidthRequest="16"
+                      HeightRequest="16"
+                      Data="M15,18 L9,12 L15,6" />
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="BackTap" />
+                </Border.GestureRecognizers>
+            </Border>
+            <Label Grid.Column="1"
+                   Text="Document trouvé"
+                   FontSize="16"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource Title}"
+                   VerticalOptions="Center" />
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,8,20,24" Spacing="0">
+
+                <Label Text="Merci de contribuer à restituer ce document à son propriétaire."
+                       FontSize="14"
+                       TextColor="{StaticResource TextMuted}" />
+
+                <!-- Encart d'information -->
+                <Border BackgroundColor="{StaticResource Surface}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 10"
+                        Padding="14"
+                        Margin="0,18,0,0">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                        <Path Style="{StaticResource Icon}"
+                              Stroke="{StaticResource Primary}"
+                              VerticalOptions="Start"
+                              Margin="0,2,0,0"
+                              Data="M1,12 C1,12 5,4 12,4 C19,4 23,12 23,12 C23,12 19,20 12,20 C5,20 1,12 1,12 Z M15,12 A3,3 0 1 1 9,12 A3,3 0 1 1 15,12 Z" />
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Ne renseignez que les informations visibles sur le document."
+                                   FontSize="13"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource Title}" />
+                            <Label Text="Aucun champ n'est indispensable : quelques informations suffisent au système pour trouver le propriétaire."
+                                   FontSize="12"
+                                   TextColor="{StaticResource TextMuted}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <!-- Type de document -->
+                <Label Text="Type de document" Style="{StaticResource SectionTitle}" Margin="0,24,0,4" />
+                <Grid ColumnDefinitions="*,Auto">
+                    <Picker x:Name="DocumentTypePicker"
+                            Grid.ColumnSpan="2"
+                            Title="Choisir un type"
+                            FontSize="17"
+                            TextColor="{StaticResource Title}"
+                            SelectedIndex="0">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Passeport</x:String>
+                                <x:String>Carte nationale d'identité</x:String>
+                                <x:String>Permis de conduire</x:String>
+                                <x:String>Diplôme</x:String>
+                                <x:String>Acte de naissance</x:String>
+                                <x:String>Autre</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Path Grid.Column="1"
+                          Style="{StaticResource Icon}"
+                          WidthRequest="14"
+                          HeightRequest="14"
+                          InputTransparent="True"
+                          Margin="0,0,8,0"
+                          Data="M6,9 L12,15 L18,9" />
+                </Grid>
+
+                <!-- Informations visibles -->
+                <Label Text="Informations visibles sur le document"
+                       Style="{StaticResource SectionTitle}"
+                       Margin="0,24,0,0" />
+
+                <Label Margin="0,16,0,0" FontSize="13">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Nom complet visible sur le document" FontAttributes="Bold" TextColor="{StaticResource Title}" />
+                            <Span Text=" (si visible)" TextColor="{StaticResource TextMuted}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Entry x:Name="FullNameEntry"
+                       Style="{StaticResource FieldEntry}"
+                       Placeholder="Ex. Aïcha Mbarga" />
+
+                <Label Margin="0,16,0,0" FontSize="13">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Numéro du document" FontAttributes="Bold" TextColor="{StaticResource Title}" />
+                            <Span Text=" (si visible)" TextColor="{StaticResource TextMuted}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Entry x:Name="DocumentNumberEntry"
+                       Style="{StaticResource FieldEntry}"
+                       Placeholder="Ex. 112048213" />
+                <Label Text="Seuls les 4 derniers caractères seront affichés."
+                       FontSize="12"
+                       TextColor="{StaticResource TextMuted}"
+                       Margin="0,6,0,0" />
+
+                <Label Margin="0,16,0,0" FontSize="13">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Établissement / organisme de délivrance" FontAttributes="Bold" TextColor="{StaticResource Title}" />
+                            <Span Text=" (si visible)" TextColor="{StaticResource TextMuted}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Entry x:Name="IssuerEntry"
+                       Style="{StaticResource FieldEntry}"
+                       Placeholder="Ex. Université de Douala" />
+
+                <!-- Où et quand -->
+                <Label Text="Où et quand l'avez-vous trouvé ?"
+                       Style="{StaticResource SectionTitle}"
+                       Margin="0,28,0,0" />
+
+                <Label Text="Lieu de découverte"
+                       FontSize="13"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource Title}"
+                       Margin="0,16,0,0" />
+                <Entry x:Name="FoundPlaceEntry"
+                       Style="{StaticResource FieldEntry}"
+                       Placeholder="Ex. Douala, Akwa" />
+
+                <Label Text="Date de découverte"
+                       FontSize="13"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource Title}"
+                       Margin="0,16,0,0" />
+                <DatePicker x:Name="FoundDatePicker"
+                            Format="dd MMM yyyy"
+                            FontSize="14"
+                            TextColor="{StaticResource Title}" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Action fixe en bas -->
+        <Grid Grid.Row="2" Padding="20,12,20,20" BackgroundColor="White">
+            <Button x:Name="DeclareButton"
+                    Text="Déclarer le document trouvé"
+                    FontSize="15"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="{StaticResource Primary}"
+                    CornerRadius="10"
+                    HeightRequest="50" />
+        </Grid>
+
+    </Grid>
+</ContentPage>

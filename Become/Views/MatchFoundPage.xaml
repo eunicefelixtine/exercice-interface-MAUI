@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Become.Views.MatchFoundPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <Color x:Key="Primary">#0D47A1</Color>
+        <Color x:Key="Title">#1A1F2B</Color>
+        <Color x:Key="TextMuted">#7B8499</Color>
+        <Color x:Key="Success">#0E8A4F</Color>
+        <Color x:Key="Surface">#F3F5F9</Color>
+        <Color x:Key="Divider">#ECEFF4</Color>
+
+        <Style x:Key="Icon" TargetType="Path">
+            <Setter Property="Stroke" Value="{StaticResource Title}" />
+            <Setter Property="StrokeThickness" Value="1.8" />
+            <Setter Property="StrokeLineCap" Value="Round" />
+            <Setter Property="StrokeLineJoin" Value="Round" />
+            <Setter Property="Aspect" Value="Uniform" />
+            <Setter Property="WidthRequest" Value="18" />
+            <Setter Property="HeightRequest" Value="18" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style x:Key="RowLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="TextColor" Value="{StaticResource TextMuted}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style x:Key="RowValue" TargetType="Label">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="{StaticResource Title}" />
+            <Setter Property="HorizontalOptions" Value="End" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="24,16,24,20">
+
+        <!-- Fermer -->
+        <Border StrokeThickness="0"
+                BackgroundColor="Transparent"
+                Padding="6"
+                HorizontalOptions="Start">
+            <Path Style="{StaticResource Icon}"
+                  WidthRequest="16"
+                  HeightRequest="16"
+                  Data="M18,6 L6,18 M6,6 L18,18" />
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer x:Name="CloseTap" />
+            </Border.GestureRecognizers>
+        </Border>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="0">
+
+                <!-- Pastille de succès -->
+                <Border BackgroundColor="{StaticResource Success}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 24"
+                        WidthRequest="48"
+                        HeightRequest="48"
+                        HorizontalOptions="Center"
+                        Margin="0,8,0,0">
+                    <Path Style="{StaticResource Icon}"
+                          Stroke="White"
+                          StrokeThickness="2.5"
+                          WidthRequest="20"
+                          HeightRequest="20"
+                          HorizontalOptions="Center"
+                          Data="M20,6 L9,17 L4,12" />
+                </Border>
+
+                <Label Text="Correspondance trouvée"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource Title}"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,20,0,0" />
+                <Label Text="Une déclaration de document trouvé correspond à votre signalement."
+                       FontSize="14"
+                       TextColor="{StaticResource TextMuted}"
+                       HorizontalTextAlignment="Center"
+                       Margin="16,8,16,0" />
+
+                <!-- Document concerné -->
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14" Margin="0,28,0,0">
+                    <Border BackgroundColor="{StaticResource Surface}"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 10"
+                            WidthRequest="40"
+                            HeightRequest="40">
+                        <Path Style="{StaticResource Icon}"
+                              Stroke="{StaticResource Primary}"
+                              HorizontalOptions="Center"
+                              Data="M12,15 A7,7 0 1 0 12,1 A7,7 0 1 0 12,15 Z M8.21,13.89 L7,23 L12,20 L17,23 L15.79,13.88" />
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                        <Label x:Name="DocumentTypeLabel"
+                               Text="Diplôme"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource Title}" />
+                        <Label x:Name="ReferenceLabel"
+                               Text="Réf. LF-2026-004698"
+                               FontSize="12"
+                               TextColor="{StaticResource TextMuted}" />
+                    </VerticalStackLayout>
+                </Grid>
+
+                <!-- Score de correspondance -->
+                <Grid ColumnDefinitions="*,Auto" Margin="0,24,0,0">
+                    <Label Text="Score de correspondance"
+                           FontSize="12"
+                           TextColor="{StaticResource TextMuted}" />
+                    <Label Grid.Column="1"
+                           Text="Correspondance forte"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource Success}" />
+                </Grid>
+                <HorizontalStackLayout Spacing="10" Margin="0,2,0,0">
+                    <Label x:Name="ScoreLabel"
+                           Text="92%"
+                           FontSize="26"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource Title}" />
+                    <Label Text="de correspondance"
+                           FontSize="14"
+                           TextColor="{StaticResource TextMuted}"
+                           VerticalOptions="End"
+                           Margin="0,0,0,4" />
+                </HorizontalStackLayout>
+                <ProgressBar x:Name="ScoreBar"
+                             Progress="0.92"
+                             ProgressColor="{StaticResource Success}"
+                             BackgroundColor="{StaticResource Divider}"
+                             HeightRequest="4"
+                             Margin="0,10,0,0" />
+                <Label Text="Indicateur interne de similarité entre les deux signalements, et non une probabilité exacte."
+                       FontSize="11"
+                       TextColor="{StaticResource TextMuted}"
+                       Margin="0,10,0,0" />
+
+                <!-- Détails -->
+                <Grid ColumnDefinitions="*,Auto" Margin="0,20,0,0" HeightRequest="40">
+                    <Label Text="Type de document" Style="{StaticResource RowLabel}" />
+                    <Label Grid.Column="1" Text="Diplôme" Style="{StaticResource RowValue}" />
+                </Grid>
+                <BoxView HeightRequest="1" Color="{StaticResource Divider}" />
+                <Grid ColumnDefinitions="*,Auto" HeightRequest="40">
+                    <Label Text="Ville" Style="{StaticResource RowLabel}" />
+                    <Label Grid.Column="1" Text="Douala" Style="{StaticResource RowValue}" />
+                </Grid>
+                <BoxView HeightRequest="1" Color="{StaticResource Divider}" />
+                <Grid ColumnDefinitions="*,Auto" HeightRequest="40">
+                    <Label Text="Date de découverte" Style="{StaticResource RowLabel}" />
+                    <Label Grid.Column="1" Text="03 oct. 2026" Style="{StaticResource RowValue}" />
+                </Grid>
+                <BoxView HeightRequest="1" Color="{StaticResource Divider}" />
+
+                <!-- Pourquoi cette correspondance ? (section dépliable) -->
+                <Grid ColumnDefinitions="*,Auto" HeightRequest="48">
+                    <Label Text="Pourquoi cette correspondance ?"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource Title}"
+                           VerticalOptions="Center" />
+                    <Path Grid.Column="1"
+                          Style="{StaticResource Icon}"
+                          WidthRequest="14"
+                          HeightRequest="14"
+                          Data="M6,9 L12,15 L18,9" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="WhyTap" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+                <Label x:Name="WhyDetailsLabel"
+                       IsVisible="False"
+                       Text="Le type de document, la ville et la période de découverte concordent avec votre signalement."
+                       FontSize="12"
+                       TextColor="{StaticResource TextMuted}"
+                       Margin="0,0,0,12" />
+
+                <!-- Note de confidentialité -->
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10" Margin="0,8,0,0">
+                    <Path Style="{StaticResource Icon}"
+                          Stroke="{StaticResource Primary}"
+                          WidthRequest="14"
+                          HeightRequest="14"
+                          VerticalOptions="Start"
+                          Margin="0,2,0,0"
+                          Data="M5,11 H19 A2,2 0 0 1 21,13 V20 A2,2 0 0 1 19,22 H5 A2,2 0 0 1 3,20 V13 A2,2 0 0 1 5,11 Z M7,11 V7 A5,5 0 0 1 17,7 V11" />
+                    <Label Grid.Column="1"
+                           Text="Certaines informations sont masquées afin de protéger les données personnelles."
+                           FontSize="12"
+                           TextColor="{StaticResource TextMuted}" />
+                </Grid>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Actions -->
+        <VerticalStackLayout Grid.Row="2" Spacing="16" Margin="0,16,0,0">
+            <Button x:Name="ViewMatchButton"
+                    Text="Voir la correspondance"
+                    FontSize="15"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="{StaticResource Primary}"
+                    CornerRadius="10"
+                    HeightRequest="50" />
+
+            <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                <Path Style="{StaticResource Icon}"
+                      Stroke="{StaticResource Primary}"
+                      WidthRequest="15"
+                      HeightRequest="15"
+                      Data="M4,15 C4,15 5,14 8,14 C11,14 13,16 16,16 C19,16 20,15 20,15 V3 C20,3 19,4 16,4 C13,4 11,2 8,2 C5,2 4,3 4,3 Z M4,22 V15" />
+                <Label Text="Signaler une erreur"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource Primary}"
+                       VerticalOptions="Center" />
+                <HorizontalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="ReportErrorTap" />
+                </HorizontalStackLayout.GestureRecognizers>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

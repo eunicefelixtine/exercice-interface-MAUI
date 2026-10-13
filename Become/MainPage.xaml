@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Become.MainPage"
+             Title="Écrans">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="12">
+            <Label Text="Choisir un écran à tester"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,8" />
+
+            <Button Text="Connexion" CommandParameter="LoginPage" Clicked="OnScreenClicked" />
+            <Button Text="Mot de passe oublié" CommandParameter="ForgotPasswordPage" Clicked="OnScreenClicked" />
+            <Button Text="Création de compte" CommandParameter="RegisterPage" Clicked="OnScreenClicked" />
+            <Button Text="Correspondance trouvée" CommandParameter="MatchFoundPage" Clicked="OnScreenClicked" />
+            <Button Text="Document trouvé" CommandParameter="FoundDocumentPage" Clicked="OnScreenClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

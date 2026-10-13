@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\SUPRA STORES\\source\\repos\\Become\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5A68C583-D15D-4C99-9AD0-F6151CCFC9B0}|Become\\Become.csproj|c:\\users\\supra stores\\source\\repos\\become\\become\\views\\matchfoundpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5A68C583-D15D-4C99-9AD0-F6151CCFC9B0}|Become\\Become.csproj|solutionrelative:become\\views\\matchfoundpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A68C583-D15D-4C99-9AD0-F6151CCFC9B0}|Become\\Become.csproj|c:\\users\\supra stores\\source\\repos\\become\\become\\views\\registerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5A68C583-D15D-4C99-9AD0-F6151CCFC9B0}|Become\\Become.csproj|solutionrelative:become\\views\\registerpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MatchFoundPage.xaml",
+              "DocumentMoniker": "C:\\Users\\SUPRA STORES\\source\\repos\\Become\\Become\\Views\\MatchFoundPage.xaml",
+              "RelativeDocumentMoniker": "Become\\Views\\MatchFoundPage.xaml",
+              "ToolTip": "C:\\Users\\SUPRA STORES\\source\\repos\\Become\\Become\\Views\\MatchFoundPage.xaml",
+              "RelativeToolTip": "Become\\Views\\MatchFoundPage.xaml",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-10T09:07:30.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegisterPage.xaml",
+              "DocumentMoniker": "C:\\Users\\SUPRA STORES\\source\\repos\\Become\\Become\\Views\\RegisterPage.xaml",
+              "RelativeDocumentMoniker": "Become\\Views\\RegisterPage.xaml",
+              "ToolTip": "C:\\Users\\SUPRA STORES\\source\\repos\\Become\\Become\\Views\\RegisterPage.xaml",
+              "RelativeToolTip": "Become\\Views\\RegisterPage.xaml",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-10T09:07:11.375Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
